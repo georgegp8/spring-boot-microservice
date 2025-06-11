@@ -66,4 +66,10 @@ public class ProductController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    // Buscar productos por nombre (contiene)
+    @GetMapping("/search/{keyword}")
+    public List<Product> searchProductsByName(@PathVariable String keyword) {
+        return productRepository.findByNameContainingIgnoreCase(keyword);
+    }
 }
